@@ -70,10 +70,14 @@ export async function POST(request: NextRequest) {
     if ('cause' in err && err.cause) console.error(LOG_PREFIX, 'Səbəb:', err.cause);
 
     const isDev = process.env.NODE_ENV !== 'production';
+    const isDbMissing = /DATABASE_URL|POSTGRES_URL|təyin edilməyib/i.test(message);
     return NextResponse.json(
       {
-        error: 'Qeydiyyat zamanı xəta baş verdi.',
+        error: isDbMissing
+          ? 'Veritabanı bağlı deyil. Vercel-də Storage → Postgres əlavə edib layihəni bağlayın.'
+          : 'Qeydiyyat zamanı xəta baş verdi.',
         ...(isDev && { debug: message, hint: 'Server loglarına baxın (Vercel: Logs / Runtime Logs)' }),
+        ...(isDbMissing && { code: 'DB_NOT_CONFIGURED' }),
       },
       { status: 500 }
     );

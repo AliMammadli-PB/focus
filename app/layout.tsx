@@ -9,6 +9,7 @@ import { DesignModePanel } from '@/components/design-mode-panel';
 export const metadata: Metadata = {
   title: 'Qarabağ Atları Meydanı · Ağ Şəhər — Mənzil Satışı',
   description: 'Ağ Şəhərdə premium smart mənzillər. Qarabağ Atları Meydanı rezidenslərində mənzilləri kəşf edin.',
+  icons: { icon: '/icon.svg', shortcut: '/icon.svg', apple: '/icon.svg' },
 };
 
 export const viewport: Viewport = {

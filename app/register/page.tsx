@@ -56,7 +56,7 @@ export default function RegisterPage() {
         console.error('[Qeydiyyat] API xətası:', res.status, data);
         if (data.debug) console.error('[Qeydiyyat] Server debug:', data.debug);
         if (data.hint) console.error('[Qeydiyyat] İpucu:', data.hint);
-        setError(data.error || 'Xəta baş verdi.');
+        setError(data.error || (data.code === 'DB_NOT_CONFIGURED' ? 'Veritabanı bağlı deyil. Vercel-də Postgres əlavə edin.' : 'Xəta baş verdi.'));
         return;
       }
       console.log('[Qeydiyyat] Uğurlu, yönləndirilir:', data.redirect);
