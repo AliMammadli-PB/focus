@@ -40,9 +40,5 @@ next-env.d.ts
 # Vercel
 .vercel
 
-# Database
-data/
-*.db
-
 # Misc
 *.pem
