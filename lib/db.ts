@@ -1,10 +1,13 @@
 import { neon } from '@neondatabase/serverless';
 
 const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+const LOG_PREFIX = '[db]';
 
 function getSql() {
   if (!connectionString) {
-    throw new Error('DATABASE_URL və ya POSTGRES_URL təyin edilməyib. Vercel-də Storage → Postgres əlavə edin.');
+    const msg = 'DATABASE_URL və ya POSTGRES_URL təyin edilməyib. Vercel-də Storage → Postgres əlavə edin.';
+    console.error(LOG_PREFIX, msg);
+    throw new Error(msg);
   }
   return neon(connectionString);
 }
@@ -14,6 +17,7 @@ let tableCreated = false;
 async function ensureTable() {
   if (tableCreated) return;
   const sql = getSql();
+  console.log(LOG_PREFIX, 'Cədvəl yoxlanılır / yaradılır…');
   await sql`
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,

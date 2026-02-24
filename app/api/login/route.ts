@@ -34,7 +34,9 @@ export async function POST(request: NextRequest) {
     });
     return res;
   } catch (e) {
-    console.error(e);
+    const err = e instanceof Error ? e : new Error(String(e));
+    console.error('[login] Xəta:', err.message);
+    console.error('[login] Stack:', err.stack);
     return NextResponse.json(
       { error: 'Daxil ola bilmədiniz.' },
       { status: 500 }

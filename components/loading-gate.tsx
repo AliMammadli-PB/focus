@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CinematicLoading } from './cinematic-loading';
 
@@ -12,7 +12,11 @@ function getLoadingDone(): boolean {
 }
 
 export function LoadingGate({ children }: { children: React.ReactNode }) {
-  const [introDone, setIntroDone] = useState(() => getLoadingDone());
+  // Həmişə server ilə eyni başla (false) — hidrasiya uyğunsuzluğunu (React #418) aradan qaldırır
+  const [introDone, setIntroDone] = useState(false);
+  useEffect(() => {
+    if (getLoadingDone()) setIntroDone(true);
+  }, []);
 
   const handleComplete = () => {
     if (typeof window !== 'undefined') sessionStorage.setItem(LOADING_DONE_KEY, '1');

@@ -1,16 +1,21 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
+const MENZIL_OPTIONS = ['1 otaqlı', '2 otaqlı', '3 otaqlı', '4 otaqlı'];
+
 export default function RegisterPage() {
   const searchParams = useSearchParams();
-  const MENZIL_OPTIONS = ['1 otaqlı', '2 otaqlı', '3 otaqlı', '4 otaqlı'];
-  const menzilFromUrl = searchParams.get('menzil') || '';
+  // İlk state server ilə eyni olsun (hidrasiya #418), URL-dən menzil sonra useEffect-də
   const [ad, setAd] = useState('');
   const [soyad, setSoyad] = useState('');
-  const [menzil, setMenzil] = useState(menzilFromUrl || MENZIL_OPTIONS[0]);
+  const [menzil, setMenzil] = useState(MENZIL_OPTIONS[0]);
+  useEffect(() => {
+    const fromUrl = searchParams.get('menzil') || '';
+    if (fromUrl && MENZIL_OPTIONS.includes(fromUrl)) setMenzil(fromUrl);
+  }, [searchParams]);
   const [parol, setParol] = useState('');
   const [parolTekrar, setParolTekrar] = useState('');
   const [error, setError] = useState('');
@@ -30,24 +35,34 @@ export default function RegisterPage() {
     }
     setLoading(true);
     try {
+      const payload = {
+        ad: ad.trim(),
+        soyad: soyad.trim(),
+        parol,
+        parol_tekrar: parolTekrar,
+        menzil: menzil || undefined,
+      };
+      console.log('[Qeydiyyat] Göndərilir:', { ...payload, parol: '(gizli)', parol_tekrar: '(gizli)' });
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ad: ad.trim(),
-          soyad: soyad.trim(),
-          parol,
-          parol_tekrar: parolTekrar,
-          menzil: menzil || undefined,
-        }),
+        body: JSON.stringify(payload),
       });
-      const data = await res.json().catch(() => ({}));
+      const data = await res.json().catch((parseErr) => {
+        console.error('[Qeydiyyat] Cavab JSON deyil:', parseErr);
+        return {};
+      });
       if (!res.ok) {
+        console.error('[Qeydiyyat] API xətası:', res.status, data);
+        if (data.debug) console.error('[Qeydiyyat] Server debug:', data.debug);
+        if (data.hint) console.error('[Qeydiyyat] İpucu:', data.hint);
         setError(data.error || 'Xəta baş verdi.');
         return;
       }
+      console.log('[Qeydiyyat] Uğurlu, yönləndirilir:', data.redirect);
       window.location.href = data.redirect || '/hesabim';
-    } catch {
+    } catch (err) {
+      console.error('[Qeydiyyat] Şəbəkə/icra xətası:', err);
       setError('Xəta baş verdi.');
     } finally {
       setLoading(false);
