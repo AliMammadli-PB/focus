@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --text: #fafafa;
+    --text-muted: rgba(250, 250, 250, 0.72);
+    --border: rgba(255, 255, 255, 0.08);
+    --glass: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  html {
+    @apply scroll-smooth;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: transparent;
+    color: var(--text);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply antialiased;
+    width: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body.design-mode-picking {
+  cursor: crosshair !important;
+}
+
+body.design-mode-picking * {
+  cursor: crosshair !important;
+}
