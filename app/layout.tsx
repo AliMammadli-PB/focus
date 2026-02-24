@@ -3,13 +3,22 @@ import { Outfit, Syne, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import { SiteBackground } from '@/components/site-background';
 import { LoadingGate } from '@/components/loading-gate';
+import { ThemeProvider } from '@/components/theme-provider';
+import { LangProvider } from '@/context/language';
 import { DesignModeProvider } from '@/context/design-mode';
 import { DesignModePanel } from '@/components/design-mode-panel';
+import { FloatingContact } from '@/components/floating-contact';
+import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
   title: 'Qarabağ Atları Meydanı · Ağ Şəhər — Mənzil Satışı',
   description: 'Ağ Şəhərdə premium smart mənzillər. Qarabağ Atları Meydanı rezidenslərində mənzilləri kəşf edin.',
   icons: { icon: '/icon.svg', shortcut: '/icon.svg', apple: '/icon.svg' },
+  openGraph: {
+    title: 'Qarabağ Atları Meydanı · Ağ Şəhər — Mənzil Satışı',
+    description: 'Ağ Şəhərdə premium smart mənzillər. Smart sistemlər, 24/7 təhlükəsizlik.',
+    type: 'website',
+  },
 };
 
 export const viewport: Viewport = {
@@ -43,13 +52,19 @@ export default function RootLayout({
   return (
     <html lang="az" suppressHydrationWarning className="dark">
       <body className={`${outfit.variable} ${syne.variable} ${cormorant.variable} font-sans min-h-screen bg-transparent text-[var(--text)] antialiased`} suppressHydrationWarning>
-        <LoadingGate>
-          <DesignModeProvider>
-            <SiteBackground />
-            <main className="relative z-10">{children}</main>
-            <DesignModePanel />
-          </DesignModeProvider>
-        </LoadingGate>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <LangProvider>
+            <LoadingGate>
+              <DesignModeProvider>
+                <Header />
+                <SiteBackground />
+                <main className="relative z-10">{children}</main>
+                <DesignModePanel />
+                <FloatingContact />
+              </DesignModeProvider>
+            </LoadingGate>
+          </LangProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

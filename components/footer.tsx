@@ -9,10 +9,18 @@ const LINKS = [
   { href: '#menziller', label: 'Mənzillər' },
   { href: '#haqqimizda', label: 'Haqqımızda' },
   { href: '#sitat', label: 'Sitat' },
+  { href: '#faq', label: 'FAQ' },
+  { href: '#qalereya', label: 'Qalereya' },
+  { href: '#xerite', label: 'Xəritə' },
   { href: '#elaqe', label: 'Əlaqə' },
   { href: '/login', label: 'Daxil ol' },
   { href: '/register', label: 'Qeydiyyat' },
   { href: '/hesabim', label: 'Hesabım' },
+];
+
+const SOCIAL = [
+  { href: 'https://instagram.com', label: 'Instagram', icon: '📷' },
+  { href: 'https://facebook.com', label: 'Facebook', icon: '👍' },
 ];
 
 export function Footer() {
@@ -49,11 +57,30 @@ export function Footer() {
             ))}
           </ul>
         </nav>
+        <div className="flex items-center gap-6">
+          {SOCIAL.map((s) => (
+            <a
+              key={s.href}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg text-white/55 transition hover:text-white"
+              aria-label={s.label}
+            >
+              {s.icon}
+            </a>
+          ))}
+        </div>
         </div>
       </DraggableSection>
       <div className="mx-auto mt-10 max-w-6xl border-t border-white/5 pt-6 text-center text-sm text-white/50">
         <p>
           © {new Date().getFullYear()} Qarabağ Atları Meydanı · Ağ Şəhər
+        </p>
+        <p className="mt-2">
+          <a href="/broshur.pdf" target="_blank" rel="noopener noreferrer" className="text-amber-400/80 hover:text-amber-300">
+            Broşür yüklə (PDF)
+          </a>
         </p>
       </div>
     </footer>

@@ -13,10 +13,10 @@ function formatPrice(n: number): string {
 }
 
 const PRICES_DEFAULTS = [
-  { rooms: 1, label: '1 otaqlı', price: 220_000, area: '42–48 m²', desc: 'Smart sistemlər, açıq məkan', key: 'menziller.price1' as const },
-  { rooms: 2, label: '2 otaqlı', price: 380_000, area: '68–78 m²', desc: 'Geniş yaşayış, tam təchizat', key: 'menziller.price2' as const },
-  { rooms: 3, label: '3 otaqlı', price: 520_000, area: '95–108 m²', desc: 'Ailə üçün ideal məkan', key: 'menziller.price3' as const },
-  { rooms: 4, label: '4 otaqlı', price: 680_000, area: '125–140 m²', desc: 'Premium yaşayış', key: 'menziller.price4' as const },
+  { rooms: 1, label: '1 otaqlı', slug: '1-otaqli', price: 220_000, area: '42–48 m²', desc: 'Smart sistemlər, açıq məkan', key: 'menziller.price1' as const },
+  { rooms: 2, label: '2 otaqlı', slug: '2-otaqli', price: 380_000, area: '68–78 m²', desc: 'Geniş yaşayış, tam təchizat', key: 'menziller.price2' as const },
+  { rooms: 3, label: '3 otaqlı', slug: '3-otaqli', price: 520_000, area: '95–108 m²', desc: 'Ailə üçün ideal məkan', key: 'menziller.price3' as const },
+  { rooms: 4, label: '4 otaqlı', slug: '4-otaqli', price: 680_000, area: '125–140 m²', desc: 'Premium yaşayış', key: 'menziller.price4' as const },
 ];
 
 export function MenzillerSection() {
@@ -52,7 +52,6 @@ export function MenzillerSection() {
             {PRICES_DEFAULTS.map((item, i) => {
               const priceVal = parseInt(get(item.key, String(item.price)), 10);
               const price = Number.isNaN(priceVal) ? item.price : priceVal;
-              const menzilSlug = encodeURIComponent(item.label);
               return (
                 <motion.article
                   key={item.rooms}
@@ -61,7 +60,7 @@ export function MenzillerSection() {
                   transition={{ duration: 0.55, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <Link
-                    href={`/register?menzil=${menzilSlug}`}
+                    href={`/menziller/${item.slug}`}
                     className="block rounded-2xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/[0.09] md:p-8"
                   >
                     <span className="text-sm font-medium uppercase tracking-wider text-white/55">
@@ -74,7 +73,7 @@ export function MenzillerSection() {
                     <p className="mt-1 text-sm text-white/55">{item.area}</p>
                     <p className="mt-4 text-sm leading-relaxed text-white/75">{item.desc}</p>
                     <p className="mt-4 text-xs font-medium uppercase tracking-wider text-amber-400/80">
-                      Seç → Qeydiyyat
+                      Ətraflı bax →
                     </p>
                   </Link>
                 </motion.article>

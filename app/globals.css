@@ -11,6 +11,14 @@
     --glass-border: rgba(255, 255, 255, 0.1);
   }
 
+  html.light {
+    --text: #0a0a0a;
+    --text-muted: rgba(10, 10, 10, 0.7);
+    --border: rgba(0, 0, 0, 0.1);
+    --glass: rgba(0, 0, 0, 0.04);
+    --glass-border: rgba(0, 0, 0, 0.08);
+  }
+
   html {
     @apply scroll-smooth;
     width: 100%;

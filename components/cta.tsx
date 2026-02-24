@@ -70,6 +70,14 @@ export function CTA() {
             >
               {get('cta.btn2', 'WhatsApp')}
             </a>
+            <a
+              href="/broshur.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full border border-white/25 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              Broşür yüklə
+            </a>
           </motion.div>
         </div>
       </DraggableSection>

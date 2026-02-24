@@ -42,6 +42,7 @@ next-env.d.ts
 
 # Local JSON store (sensitive)
 data/users.json
+data/leads.json
 
 # Source photos (copies are in public/photos)
 /photos/
