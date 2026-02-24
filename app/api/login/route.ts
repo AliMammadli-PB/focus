@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { findUserByAdSoyad } from '@/lib/db';
+import { findUserByAdSoyad } from '@/lib/users-json';
 import { verifyPassword, createToken, getCookieName, getMaxAge } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {

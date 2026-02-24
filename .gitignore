@@ -40,5 +40,8 @@ next-env.d.ts
 # Vercel
 .vercel
 
+# Local JSON store (sensitive)
+data/users.json
+
 # Misc
 *.pem

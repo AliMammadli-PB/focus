@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { findUserById } from '@/lib/db';
+import { findUserById } from '@/lib/users-json';
 import { verifyToken, getCookieName } from '@/lib/auth';
 
 export async function GET() {

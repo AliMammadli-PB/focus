@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { insertUser } from '@/lib/db';
+import { insertUser } from '@/lib/users-json';
 import { hashPassword, createToken, getCookieName, getMaxAge } from '@/lib/auth';
 
 const LOG_PREFIX = '[register]';
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     const password_hash = await hashPassword(parol);
     const selected_menzil = typeof menzil === 'string' && menzil.trim() ? menzil.trim() : null;
 
-    console.log(LOG_PREFIX, 'DB-ə yazılır…', { selected_menzil });
+    console.log(LOG_PREFIX, 'JSON-a yazılır…', { selected_menzil });
     const id = await insertUser(ad.trim(), soyad.trim(), password_hash, selected_menzil);
     console.log(LOG_PREFIX, 'İstifadəçi yaradıldı, id:', id);
 
@@ -70,14 +70,16 @@ export async function POST(request: NextRequest) {
     if ('cause' in err && err.cause) console.error(LOG_PREFIX, 'Səbəb:', err.cause);
 
     const isDev = process.env.NODE_ENV !== 'production';
-    const isDbMissing = /DATABASE_URL|POSTGRES_URL|təyin edilməyib/i.test(message);
+    const isStorageMissing =
+      /BLOB_READ_WRITE_TOKEN|EROFS|read-only|EACCES|təyin edilməyib/i.test(message) ||
+      message.includes('Blob');
     return NextResponse.json(
       {
-        error: isDbMissing
-          ? 'Veritabanı bağlı deyil. Vercel-də Storage → Postgres əlavə edib layihəni bağlayın.'
+        error: isStorageMissing
+          ? 'Storage bağlı deyil. Lokalda data/users.json avtomatik yaranır. Vercel-də Storage → Blob əlavə edib layihəni bağlayın.'
           : 'Qeydiyyat zamanı xəta baş verdi.',
         ...(isDev && { debug: message, hint: 'Server loglarına baxın (Vercel: Logs / Runtime Logs)' }),
-        ...(isDbMissing && { code: 'DB_NOT_CONFIGURED' }),
+        ...(isStorageMissing && { code: 'DB_NOT_CONFIGURED' }),
       },
       { status: 500 }
     );
