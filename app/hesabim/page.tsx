@@ -102,15 +102,16 @@ export default function HesabimPage() {
             </p>
           </div>
           {menzilImageUrl && (
-            <div className="relative mt-6 overflow-hidden rounded-xl border border-white/10 bg-white/5">
-              <div className="relative flex min-h-[200px] items-center justify-center p-4">
+            <div className="relative mt-6 overflow-hidden rounded-xl border border-white/10 bg-transparent">
+              <div className="relative flex min-h-[200px] items-center justify-center bg-transparent p-4">
                 <Image
                   src={menzilImageUrl}
                   alt={`${menzilLabel} plan`}
                   width={600}
                   height={400}
-                  className="object-contain"
+                  className="object-contain bg-transparent"
                   unoptimized
+                  style={{ background: 'transparent' }}
                 />
               </div>
             </div>
