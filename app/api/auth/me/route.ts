@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { getDb } from '@/lib/db';
+import { findUserById } from '@/lib/db';
 import { verifyToken, getCookieName } from '@/lib/auth';
 
 export async function GET() {
@@ -14,10 +14,7 @@ export async function GET() {
     if (!payload) {
       return NextResponse.json({ user: null });
     }
-    const db = getDb();
-    const row = db.prepare(
-      'SELECT id, ad, soyad, selected_menzil, created_at FROM users WHERE id = ?'
-    ).get(payload.userId) as { id: number; ad: string; soyad: string; selected_menzil: string | null; created_at: string } | undefined;
+    const row = await findUserById(payload.userId);
     if (!row) {
       return NextResponse.json({ user: null });
     }

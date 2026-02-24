@@ -90,6 +90,16 @@ Brauzerdə: **http://localhost:3000**
 - **Production build:** `npm run build` → `npm run start`
 - **Lint:** `npm run lint`
 
+### Vercel deploy (qeydiyyat üçün veritabanı)
+
+Sayt Vercel-də deploy olunanda **qeydiyyat və daxil ol** üçün Postgres veritabanı lazımdır. Vercel dashboard-da:
+
+1. **Storage** → **Create Database** → **Postgres** (Neon) seçin və yaradın.
+2. Layihəni bu veritabanına **Connect** edin — avtomatik olaraq `POSTGRES_URL` və ya `DATABASE_URL` əlavə olunacaq.
+3. Yenidən deploy edin (və ya bir commit push edin).
+
+Əgər `DATABASE_URL` / `POSTGRES_URL` təyin olunmayıbsa, qeydiyyat zamanı "Qeydiyyat zamanı xəta baş verdi" xətası çıxır.
+
 ---
 
 ## Əsas səhifə bölmələri

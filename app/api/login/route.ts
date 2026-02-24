@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { findUserByAdSoyad } from '@/lib/db';
 import { verifyPassword, createToken, getCookieName, getMaxAge } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
@@ -14,10 +14,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const db = getDb();
-    const row = db.prepare(
-      'SELECT id, ad, soyad, password_hash FROM users WHERE ad = ? AND soyad = ? LIMIT 1'
-    ).get(ad.trim(), soyad.trim()) as { id: number; ad: string; soyad: string; password_hash: string } | undefined;
+    const row = await findUserByAdSoyad(ad.trim(), soyad.trim());
 
     if (!row || !(await verifyPassword(parol, row.password_hash))) {
       return NextResponse.json(

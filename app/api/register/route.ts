@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { insertUser } from '@/lib/db';
 import { hashPassword, createToken, getCookieName, getMaxAge } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
@@ -32,15 +32,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const db = getDb();
     const password_hash = await hashPassword(parol);
     const selected_menzil = typeof menzil === 'string' && menzil.trim() ? menzil.trim() : null;
 
-    const stmt = db.prepare(
-      'INSERT INTO users (ad, soyad, password_hash, selected_menzil) VALUES (?, ?, ?, ?)'
-    );
-    const result = stmt.run(ad.trim(), soyad.trim(), password_hash, selected_menzil);
-    const id = result.lastInsertRowid as number;
+    const id = await insertUser(ad.trim(), soyad.trim(), password_hash, selected_menzil);
 
     const token = await createToken({ userId: id, ad: ad.trim(), soyad: soyad.trim() });
     const res = NextResponse.json({ success: true, redirect: '/hesabim' });
