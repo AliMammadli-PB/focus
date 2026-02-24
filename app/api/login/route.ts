@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
     if (!ad?.trim() || !soyad?.trim() || !parol) {
       return NextResponse.json(
-        { error: 'Ad, soyad və parol tələb olunur.' },
+        { error: 'Ad, soyad və şifrə tələb olunur.' },
         { status: 400 }
       );
     }
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
     if (!row || !(await verifyPassword(parol, row.password_hash))) {
       return NextResponse.json(
-        { error: 'Ad, soyad və ya parol səhvdir.' },
+        { error: 'Ad, soyad və ya şifrə səhvdir.' },
         { status: 401 }
       );
     }

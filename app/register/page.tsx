@@ -26,11 +26,11 @@ export default function RegisterPage() {
     e.preventDefault();
     setError('');
     if (parol !== parolTekrar) {
-      setError('Parollar uyğun gəlmir.');
+      setError('Şifrələr uyğun gəlmir.');
       return;
     }
     if (parol.length < 4) {
-      setError('Parol ən azı 4 simvol olmalıdır.');
+      setError('Şifrə ən azı 4 simvol olmalıdır.');
       return;
     }
     setLoading(true);
@@ -121,7 +121,7 @@ export default function RegisterPage() {
           </div>
           <div>
             <label htmlFor="parol" className="mb-1.5 block text-sm font-medium text-white/80">
-              Parol
+              Şifrə
             </label>
             <input
               id="parol"
@@ -131,12 +131,12 @@ export default function RegisterPage() {
               required
               minLength={4}
               className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
-              placeholder="Parol"
+              placeholder="Şifrə"
             />
           </div>
           <div>
             <label htmlFor="parol_tekrar" className="mb-1.5 block text-sm font-medium text-white/80">
-              Parol (təkrar)
+              Şifrə (təkrar)
             </label>
             <input
               id="parol_tekrar"
@@ -146,7 +146,7 @@ export default function RegisterPage() {
               required
               minLength={4}
               className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
-              placeholder="Parolu təkrar yazın"
+              placeholder="Şifrəni təkrar yazın"
             />
           </div>
           {error && (

@@ -70,7 +70,7 @@ export default function LoginPage() {
           </div>
           <div>
             <label htmlFor="parol" className="mb-1.5 block text-sm font-medium text-white/80">
-              Parol
+              Şifrə
             </label>
             <input
               id="parol"
@@ -79,7 +79,7 @@ export default function LoginPage() {
               onChange={(e) => setParol(e.target.value)}
               required
               className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
-              placeholder="Parol"
+              placeholder="Şifrə"
             />
           </div>
           {error && (

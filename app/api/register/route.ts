@@ -30,14 +30,14 @@ export async function POST(request: NextRequest) {
     if (!parol || parol.length < 4) {
       console.warn(LOG_PREFIX, 'Validasiya: parol qısa');
       return NextResponse.json(
-        { error: 'Parol ən azı 4 simvol olmalıdır.' },
+        { error: 'Şifrə ən azı 4 simvol olmalıdır.' },
         { status: 400 }
       );
     }
     if (parol !== parol_tekrar) {
       console.warn(LOG_PREFIX, 'Validasiya: parollar uyğun gəlmir');
       return NextResponse.json(
-        { error: 'Parollar uyğun gəlmir.' },
+        { error: 'Şifrələr uyğun gəlmir.' },
         { status: 400 }
       );
     }
