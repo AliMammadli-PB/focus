@@ -4,16 +4,28 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CinematicLoading } from './cinematic-loading';
 
+const LOADING_DONE_KEY = 'focus_loading_done';
+
+function getLoadingDone(): boolean {
+  if (typeof window === 'undefined') return false;
+  return sessionStorage.getItem(LOADING_DONE_KEY) === '1';
+}
+
 export function LoadingGate({ children }: { children: React.ReactNode }) {
-  const [introDone, setIntroDone] = useState(false);
+  const [introDone, setIntroDone] = useState(() => getLoadingDone());
+
+  const handleComplete = () => {
+    if (typeof window !== 'undefined') sessionStorage.setItem(LOADING_DONE_KEY, '1');
+    setIntroDone(true);
+  };
+
+  const showLoading = !introDone;
 
   return (
     <>
-      {!introDone && (
+      {showLoading && (
         <CinematicLoading
-          onComplete={() => {
-            setIntroDone(true);
-          }}
+          onComplete={handleComplete}
         />
       )}
       <motion.div

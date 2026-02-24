@@ -29,7 +29,7 @@ const ITEMS: EditableItem[] = [
   { key: 'cta.description', label: 'CTA — təsvir', type: 'text', defaultText: 'Qarabağ Atları meydanında rezidenslərdə smart mənzillər və tam təhlükəsizlik ilə yaşayın.' },
   { key: 'cta.descriptionColor', label: 'CTA — təsvir rəngi', type: 'color' },
   { key: 'cta.btn1', label: 'CTA — düymə 1', type: 'text', defaultText: 'Zəng edin' },
-  { key: 'cta.btn2', label: 'CTA — düymə 2', type: 'text', defaultText: 'Email' },
+  { key: 'cta.btn2', label: 'CTA — düymə 2', type: 'text', defaultText: 'WhatsApp' },
   { key: 'cta.pos', label: 'CTA — yer (sürüklə)', type: 'text', defaultText: '0,0' },
   { key: 'menziller.heading', label: 'Mənzillər — başlıq', type: 'text', defaultText: 'Mənzillər və qiymətlər' },
   { key: 'menziller.subtitle', label: 'Mənzillər — alt yazı', type: 'text', defaultText: 'Ağ Şəhər · Smart mənzillər · 24/7 təhlükəsizlik' },

@@ -6,6 +6,7 @@ import { motion, useInView } from 'framer-motion';
 import { ScrollLetters } from './scroll-letters';
 import { useDesignMode } from '@/context/design-mode';
 import { DraggableSection } from '@/components/draggable-section';
+import { CONTACT_PHONE_TEL, whatsAppUrl } from '@/lib/contact';
 
 export function CTA() {
   const ref = useRef<HTMLElement>(null);
@@ -54,19 +55,21 @@ export function CTA() {
             transition={{ delay: 0.2 }}
           >
             <Link
-              href="tel:+994123456789"
+              href={CONTACT_PHONE_TEL}
               data-design-key="cta.btn1"
               className="inline-block rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition hover:bg-white/95 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
             >
               {get('cta.btn1', 'Zəng edin')}
             </Link>
-            <Link
-              href="mailto:info@example.az"
+            <a
+              href={whatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
               data-design-key="cta.btn2"
               className="inline-block rounded-full border border-white/25 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
             >
-              {get('cta.btn2', 'Email')}
-            </Link>
+              {get('cta.btn2', 'WhatsApp')}
+            </a>
           </motion.div>
         </div>
       </DraggableSection>

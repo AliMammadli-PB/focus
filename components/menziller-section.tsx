@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { ScrollLetters } from './scroll-letters';
 import { useDesignMode } from '@/context/design-mode';
@@ -51,23 +52,31 @@ export function MenzillerSection() {
             {PRICES_DEFAULTS.map((item, i) => {
               const priceVal = parseInt(get(item.key, String(item.price)), 10);
               const price = Number.isNaN(priceVal) ? item.price : priceVal;
+              const menzilSlug = encodeURIComponent(item.label);
               return (
                 <motion.article
                   key={item.rooms}
                   initial={{ opacity: 0, y: 24 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.55, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] }}
-                  className="rounded-2xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/[0.09] md:p-8"
                 >
-                  <span className="text-sm font-medium uppercase tracking-wider text-white/55">
-                    {item.label}
-                  </span>
-                  <p className="mt-4 font-heading text-3xl font-bold text-white md:text-4xl">
-                    {formatPrice(price)}{' '}
-                    <span className="text-lg font-normal text-white/60">₼</span>
-                  </p>
-                  <p className="mt-1 text-sm text-white/55">{item.area}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-white/75">{item.desc}</p>
+                  <Link
+                    href={`/register?menzil=${menzilSlug}`}
+                    className="block rounded-2xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/[0.09] md:p-8"
+                  >
+                    <span className="text-sm font-medium uppercase tracking-wider text-white/55">
+                      {item.label}
+                    </span>
+                    <p className="mt-4 font-heading text-3xl font-bold text-white md:text-4xl">
+                      {formatPrice(price)}{' '}
+                      <span className="text-lg font-normal text-white/60">₼</span>
+                    </p>
+                    <p className="mt-1 text-sm text-white/55">{item.area}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-white/75">{item.desc}</p>
+                    <p className="mt-4 text-xs font-medium uppercase tracking-wider text-amber-400/80">
+                      Seç → Qeydiyyat
+                    </p>
+                  </Link>
                 </motion.article>
               );
             })}

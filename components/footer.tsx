@@ -10,6 +10,9 @@ const LINKS = [
   { href: '#haqqimizda', label: 'Haqqımızda' },
   { href: '#sitat', label: 'Sitat' },
   { href: '#elaqe', label: 'Əlaqə' },
+  { href: '/login', label: 'Daxil ol' },
+  { href: '/register', label: 'Qeydiyyat' },
+  { href: '/hesabim', label: 'Hesabım' },
 ];
 
 export function Footer() {
