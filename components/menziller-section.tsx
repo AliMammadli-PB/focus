@@ -6,6 +6,7 @@ import { motion, useInView } from 'framer-motion';
 import { ScrollLetters } from './scroll-letters';
 import { useDesignMode } from '@/context/design-mode';
 import { DraggableSection } from '@/components/draggable-section';
+import { ImagePlaceholder } from '@/components/image-placeholder';
 
 /** Server və client eyni format üçün — hydration uyğunluğu */
 function formatPrice(n: number): string {
@@ -13,10 +14,9 @@ function formatPrice(n: number): string {
 }
 
 const PRICES_DEFAULTS = [
-  { rooms: 1, label: '1 otaqlı', slug: '1-otaqli', price: 220_000, area: '42–48 m²', desc: 'Smart sistemlər, açıq məkan', key: 'menziller.price1' as const },
-  { rooms: 2, label: '2 otaqlı', slug: '2-otaqli', price: 380_000, area: '68–78 m²', desc: 'Geniş yaşayış, tam təchizat', key: 'menziller.price2' as const },
-  { rooms: 3, label: '3 otaqlı', slug: '3-otaqli', price: 520_000, area: '95–108 m²', desc: 'Ailə üçün ideal məkan', key: 'menziller.price3' as const },
-  { rooms: 4, label: '4 otaqlı', slug: '4-otaqli', price: 680_000, area: '125–140 m²', desc: 'Premium yaşayış', key: 'menziller.price4' as const },
+  { rooms: 2, label: '2 Otaqlı', slug: '2-otaqli', price: 438_141, area: '78.1–107.8 m²', desc: '5005 azn-dən başlayan qiymətlərlə', key: 'menziller.price2' as const, img: '/photos/menzil-2otaqli.png', imgW: 600, imgH: 400 },
+  { rooms: 3, label: '3-otaqlı', slug: '3-otaqli', price: 532_032, area: '96.1–147.6 m²', desc: '4 950 azn-dən başlayan qiymətlərlə', key: 'menziller.price3' as const, img: '/photos/menzil-3otaqli.png', imgW: 600, imgH: 400 },
+  { rooms: 4, label: '4-otaqlı', slug: '4-otaqli', price: 727_650, area: '132.3–147 m²', desc: '4 950 azn-dən başlayan qiymətlərlə', key: 'menziller.price4' as const, img: '/photos/menzil-4otaqli.png', imgW: 600, imgH: 400 },
 ];
 
 export function MenzillerSection() {
@@ -41,14 +41,14 @@ export function MenzillerSection() {
               data-design-key="menziller.heading"
               className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
             >
-              <ScrollLetters text={get('menziller.heading', 'Mənzillər və qiymətlər')} />
+              <ScrollLetters text={get('menziller.heading', 'Mənzil Seçimləri')} />
             </h2>
-            <p data-design-key="menziller.subtitle" className="mt-5 text-lg text-white/65">
-              <ScrollLetters text={get('menziller.subtitle', 'Ağ Şəhər · Smart mənzillər · 24/7 təhlükəsizlik')} />
+            <p data-design-key="menziller.subtitle" className="mt-5 text-lg text-white">
+              <ScrollLetters text={get('menziller.subtitle', 'Qarabagh Horses Square Residence-də yaşamağın üstünlükləri')} />
             </p>
           </header>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PRICES_DEFAULTS.map((item, i) => {
               const priceVal = parseInt(get(item.key, String(item.price)), 10);
               const price = Number.isNaN(priceVal) ? item.price : priceVal;
@@ -61,20 +61,30 @@ export function MenzillerSection() {
                 >
                   <Link
                     href={`/menziller/${item.slug}`}
-                    className="block rounded-2xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/[0.09] md:p-8"
+                    className="block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm transition hover:border-white/20 hover:bg-white/[0.09]"
                   >
-                    <span className="text-sm font-medium uppercase tracking-wider text-white/55">
-                      {item.label}
-                    </span>
-                    <p className="mt-4 font-heading text-3xl font-bold text-white md:text-4xl">
-                      {formatPrice(price)}{' '}
-                      <span className="text-lg font-normal text-white/60">₼</span>
-                    </p>
-                    <p className="mt-1 text-sm text-white/55">{item.area}</p>
-                    <p className="mt-4 text-sm leading-relaxed text-white/75">{item.desc}</p>
-                    <p className="mt-4 text-xs font-medium uppercase tracking-wider text-amber-400/80">
-                      Ətraflı bax →
-                    </p>
+                    <ImagePlaceholder
+                      src={item.img}
+                      alt={item.label}
+                      width={item.imgW}
+                      height={item.imgH}
+                      className="rounded-t-2xl border-0 rounded-b-none"
+                    />
+                    <div className="p-7 md:p-8">
+                      <span className="text-sm font-medium uppercase tracking-wider text-white">
+                        {item.label}
+                      </span>
+                      <p className="mt-4 font-heading text-3xl font-bold text-white md:text-4xl">
+                        {formatPrice(price)}{' '}
+                        <span className="text-lg font-normal text-white">₼</span>
+                        <span className="ml-1 text-sm font-normal text-white">dən</span>
+                      </p>
+                      <p className="mt-1 text-xs text-white">*Təklif olunan sahə {item.area}</p>
+                      <p className="mt-4 text-sm leading-relaxed text-white">{item.desc}</p>
+                      <p className="mt-4 text-xs font-medium uppercase tracking-wider text-amber-400/80">
+                        Ətraflı bax →
+                      </p>
+                    </div>
                   </Link>
                 </motion.article>
               );

@@ -49,7 +49,7 @@ function FaqItem({ sual, cavab, index }: { sual: string; cavab: string; index: n
         transition={{ duration: 0.25 }}
         className="overflow-hidden"
       >
-        <p className="pb-5 pr-8 text-white/70">{cavab}</p>
+        <p className="pb-5 pr-8 text-white">{cavab}</p>
       </motion.div>
     </motion.div>
   );
@@ -77,7 +77,7 @@ export function FAQ() {
           <ScrollLetters text="Tez-tez verilən suallar" />
         </motion.h2>
         <motion.p
-          className="mt-3 text-white/65"
+          className="mt-3 text-white"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.08 }}

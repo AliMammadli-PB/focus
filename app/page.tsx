@@ -1,31 +1,14 @@
-import { Hero } from '@/components/hero';
-import { MenzillerSection } from '@/components/menziller-section';
-import { About } from '@/components/about';
-import { Features } from '@/components/features';
-import { Quote } from '@/components/quote';
-import { FAQ } from '@/components/faq';
-import { GallerySection } from '@/components/gallery-section';
-import { MapSection } from '@/components/map-section';
-import { CTA } from '@/components/cta';
-import { MelumatAlSection } from '@/components/melumat-al-section';
-import { ContactSection } from '@/components/contact-section';
-import { Footer } from '@/components/footer';
+'use client';
+
+import { useTheme } from '@/context/theme-context';
+import { Theme1View } from '@/components/themes/theme1-view';
+import { Theme2View } from '@/components/themes/theme2-view';
+import { Theme3View } from '@/components/themes/theme3-view';
 
 export default function Home() {
-  return (
-    <>
-      <Hero />
-      <MenzillerSection />
-      <About />
-      <Features />
-      <Quote />
-      <FAQ />
-      <GallerySection />
-      <MapSection />
-      <CTA />
-      <MelumatAlSection />
-      <ContactSection />
-      <Footer />
-    </>
-  );
+  const { theme } = useTheme();
+
+  if (theme === '2') return <Theme2View />;
+  if (theme === '3') return <Theme3View />;
+  return <Theme1View />;
 }

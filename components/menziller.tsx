@@ -39,7 +39,7 @@ export function Menziller() {
               Mənzillər
             </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/60">
+          <p className="mx-auto mt-4 max-w-xl text-white">
             Smart mənzillər və tam təhlükəsizlik. Mənzillərə klik edin.
           </p>
         </motion.div>
@@ -60,7 +60,7 @@ export function Menziller() {
                 <HomeIcon className="h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold text-white">Mənzil {m.id}</h3>
-              <p className="mt-1 text-sm text-white/60">
+              <p className="mt-1 text-sm text-white">
                 {m.block} blok · {m.rooms} otaq
               </p>
             </motion.article>

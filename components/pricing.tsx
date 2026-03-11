@@ -49,7 +49,7 @@ export function Pricing() {
               Qiymət
             </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/60">
+          <p className="mx-auto mt-4 max-w-xl text-white">
             Mənzil növünə görə qiymətlər. Ətraflı müsahibə üçün əlaqə saxlayın.
           </p>
         </motion.div>
@@ -71,11 +71,11 @@ export function Pricing() {
                 <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-violet-500/20 blur-3xl" />
               )}
               <h3 className="text-xl font-semibold text-white">{plan.name}</h3>
-              <p className="mt-1 text-white/60">{plan.description}</p>
+              <p className="mt-1 text-white">{plan.description}</p>
               <p className="mt-4 text-2xl font-bold text-white">{plan.price}</p>
               <ul className="mt-6 space-y-3">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-white/80">
+                  <li key={f} className="flex items-center gap-2 text-white">
                     <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
                     {f}
                   </li>

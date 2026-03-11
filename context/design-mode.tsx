@@ -67,17 +67,6 @@ export function DesignModeProvider({ children }: { children: React.ReactNode }) 
   );
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'd') {
-        e.preventDefault();
-        setIsDesignMode((v) => !v);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  useEffect(() => {
     if (!isDesignMode || !isPickingElement) return;
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;

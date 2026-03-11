@@ -58,7 +58,7 @@ export function Testimonials() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
-              className="text-lg leading-relaxed text-white/90 md:text-xl"
+              className="text-lg leading-relaxed text-white md:text-xl"
             >
               &ldquo;{ITEMS[index].quote}&rdquo;
             </motion.blockquote>
@@ -68,7 +68,7 @@ export function Testimonials() {
               <cite className="not-italic font-semibold text-white">
                 {ITEMS[index].author}
               </cite>
-              <p className="text-sm text-white/50">{ITEMS[index].role}</p>
+              <p className="text-sm text-white">{ITEMS[index].role}</p>
             </div>
             <div className="flex gap-2">
               {ITEMS.map((_, i) => (

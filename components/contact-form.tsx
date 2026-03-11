@@ -51,7 +51,7 @@ export function ContactForm({ tip = 'elaqe' }: { tip?: Tip }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="contact-ad" className="mb-1.5 block text-sm font-medium text-white/80">Ad Soyad</label>
+        <label htmlFor="contact-ad" className="mb-1.5 block text-sm font-medium text-white">Ad Soyad</label>
         <input
           id="contact-ad"
           type="text"
@@ -63,7 +63,7 @@ export function ContactForm({ tip = 'elaqe' }: { tip?: Tip }) {
         />
       </div>
       <div>
-        <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-white/80">E-poçt</label>
+        <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-white">E-poçt</label>
         <input
           id="contact-email"
           type="email"
@@ -75,7 +75,7 @@ export function ContactForm({ tip = 'elaqe' }: { tip?: Tip }) {
         />
       </div>
       <div>
-        <label htmlFor="contact-telefon" className="mb-1.5 block text-sm font-medium text-white/80">Telefon</label>
+        <label htmlFor="contact-telefon" className="mb-1.5 block text-sm font-medium text-white">Telefon</label>
         <input
           id="contact-telefon"
           type="tel"
@@ -86,7 +86,7 @@ export function ContactForm({ tip = 'elaqe' }: { tip?: Tip }) {
         />
       </div>
       <div>
-        <label htmlFor="contact-mesaj" className="mb-1.5 block text-sm font-medium text-white/80">Mesaj</label>
+        <label htmlFor="contact-mesaj" className="mb-1.5 block text-sm font-medium text-white">Mesaj</label>
         <textarea
           id="contact-mesaj"
           value={mesaj}

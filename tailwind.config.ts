@@ -17,6 +17,8 @@ const config: Config = {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         heading: ['var(--font-heading)', 'var(--font-body)', 'system-ui', 'sans-serif'],
         loading: ['var(--font-loading)', 'Georgia', 'serif'],
+        theme2: ['var(--font-theme2)', 'Georgia', 'serif'],
+        theme3: ['var(--font-theme3)', 'monospace'],
       },
       borderRadius: {
         '4xl': '2rem',

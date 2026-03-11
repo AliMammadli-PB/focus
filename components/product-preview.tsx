@@ -35,7 +35,7 @@ export function ProductPreview() {
               Gösteriş videosu
             </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/60">
+          <p className="mx-auto mt-4 max-w-xl text-white">
             Qarabağ Atları Meydanı · Ağ Şəhər
           </p>
         </motion.div>

@@ -140,7 +140,7 @@ export function Quote() {
                   <cite className="font-heading not-italic font-semibold text-white">
                     <ScrollLetters key={`n-${review.name}`} text={review.name} />
                   </cite>
-                  <p className="mt-0.5 text-sm text-white/55">
+                  <p className="mt-0.5 text-sm text-white">
                     <ScrollLetters key={`b-${review.name}`} text={`rey bildirib · ${review.block}`} />
                   </p>
                 </div>

@@ -25,7 +25,7 @@ export function ImageText() {
             >
               Gösteriş videosu
             </h2>
-            <p className="mt-8 max-w-md text-lg leading-relaxed text-text-muted">
+            <p className="mt-8 max-w-md text-lg leading-relaxed text-white">
               Qarabağ Atları Meydanı · Ağ Şəhər. Smart mənzillər və tam təhlükəsizlik ilə
               yaşayış — bu binada mənzil almaq fərq budur.
             </p>

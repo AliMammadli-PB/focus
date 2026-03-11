@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test tests/a11y --reporter=list",
+    "test:lighthouse": "npx lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html --chrome-flags=\"--headless\" --only-categories=performance,accessibility,best-practices,seo",
+    "test:pa11y": "npx pa11y http://localhost:3000 --reporter json"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
@@ -23,6 +27,10 @@
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.49.0",
+    "lighthouse": "^13.0.0",
+    "pa11y": "^9.0.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",

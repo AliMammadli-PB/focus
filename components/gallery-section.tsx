@@ -38,7 +38,7 @@ export function GallerySection() {
           <ScrollLetters text="Qalereya" />
         </motion.h2>
         <motion.p
-          className="mt-3 text-white/70"
+          className="mt-3 text-white"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.08 }}

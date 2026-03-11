@@ -140,9 +140,10 @@ export function CinematicLoading({ onComplete }: { onComplete: () => void }) {
             </div>
           )}
 
-          <h1
-            className="font-loading relative z-10 text-center text-4xl font-semibold tracking-tight text-amber-400/95 sm:text-5xl md:text-6xl lg:text-7xl"
+          <div
+            role="status"
             aria-label={TITLE}
+            className="font-loading relative z-10 text-center text-4xl font-semibold tracking-tight text-amber-400/95 sm:text-5xl md:text-6xl lg:text-7xl"
           >
             {TITLE.split('').map((char, i) => (
               <motion.span
@@ -172,7 +173,7 @@ export function CinematicLoading({ onComplete }: { onComplete: () => void }) {
                 )}
               </motion.span>
             ))}
-          </h1>
+          </div>
         </div>
 
         <motion.p

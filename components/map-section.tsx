@@ -27,7 +27,7 @@ export function MapSection() {
           <ScrollLetters text="Ünvan və xəritə" />
         </motion.h2>
         <motion.p
-          className="mt-3 text-white/70"
+          className="mt-3 text-white"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.08 }}
@@ -53,7 +53,7 @@ export function MapSection() {
           />
         </motion.div>
         <motion.p
-          className="mt-4 text-center text-sm text-white/55"
+          className="mt-4 text-center text-sm text-white"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.25 }}

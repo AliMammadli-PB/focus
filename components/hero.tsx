@@ -30,7 +30,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              {get('hero.subtitle', 'Ağ Şəhər · Premium Rezidenslər')}
+              {get('hero.subtitle', 'Xoş Gəlmisiniz! Ağ Şəhərin mərkəzində bir memarlıq incisi.')}
             </motion.p>
             <motion.h1
               id="hero-heading"
@@ -41,7 +41,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              {get('hero.title', 'Qarabağ Atları Meydanı')}
+              {get('hero.title', 'Qarabagh Horses Square')}
             </motion.h1>
             <motion.p
               data-design-key="hero.description"
@@ -51,7 +51,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             >
-              {get('hero.description', 'Smart mənzillər, tam təhlükəsizlik. Ağ Şəhərdə yaşayışın ən yaxşı ünvanı.')}
+              {get('hero.description', 'Müasir dizayn və mədəni irsin ahəngdə olduğu bir memarlıq incisi. Təbii daş, geniş açıq məkanlar — rahatlıq və dəbdəbə.')}
             </motion.p>
             <motion.div
               className="mt-12 flex flex-wrap gap-4"
@@ -64,7 +64,7 @@ export function Hero() {
                 data-design-key="hero.cta1"
                 className="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition hover:bg-white/95 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
               >
-                {get('hero.cta1', 'Menzillerimizi kəşf et')}
+                {get('hero.cta1', 'Mənzil seçimləri')}
               </Link>
               <Link
                 href="#elaqe"

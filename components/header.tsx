@@ -2,15 +2,18 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useLang } from '@/context/language';
 
 const NAV_LINKS = [
   { href: '#haqqimizda', key: 'nav_haqqimizda' },
-  { href: '#xususiyyetler', key: 'nav_xususiyyetler' },
+  { href: '#yasam-terzi', key: 'nav_yasam_terzi' },
   { href: '#menziller', key: 'nav_menziller' },
+  { href: '#yerlesme', key: 'nav_yerlesme' },
+  { href: '#odenis', key: 'nav_odenis' },
+  { href: '#investisiya', key: 'nav_investisiya' },
+  { href: '#xususiyyetler', key: 'nav_xususiyyetler' },
   { href: '#sitat', key: 'nav_sitat' },
   { href: '#faq', key: 'nav_faq' },
   { href: '#qalereya', key: 'nav_qalereya' },
@@ -23,7 +26,6 @@ export function Header() {
   const [langOpen, setLangOpen] = useState(false);
   const { scrollY } = useScroll();
   const borderOpacity = useTransform(scrollY, [0, 56], [0, 1]);
-  const { theme, setTheme } = useTheme();
   const { t, lang, setLang } = useLang();
 
   return (
@@ -40,11 +42,11 @@ export function Header() {
           className="font-heading text-base font-semibold tracking-tight text-[var(--text)] outline-none transition focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent md:text-lg"
           aria-label="Ana səhifə"
         >
-          Qarabağ Atları
+          Qarabagh Horses Square
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Əsas menyu">
-          {NAV_LINKS.slice(0, 6).map((link) => (
+          {NAV_LINKS.slice(0, 8).map((link) => (
             <NavLink key={link.href} href={link.href}>
               {t(link.key)}
             </NavLink>
@@ -83,14 +85,6 @@ export function Header() {
               )}
             </AnimatePresence>
           </div>
-          <button
-            type="button"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="rounded-lg border border-white/20 bg-white/5 p-1.5 text-[var(--text)]"
-            aria-label={theme === 'dark' ? 'İşıqlı rejim' : 'Qaranlıq rejim'}
-          >
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
         </div>
 
         <button

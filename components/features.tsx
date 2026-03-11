@@ -30,7 +30,7 @@ export function Features() {
           >
             <ScrollLetters text="Smart mənzillər və təhlükəsizlik" />
           </h2>
-          <p className="mt-5 text-lg text-white/65">
+          <p className="mt-5 text-lg text-white">
             <ScrollLetters text="Birbaşa binada xəbərdarlıq, su və qaz sızması aşkarlanır." />
           </p>
         </header>
@@ -44,11 +44,11 @@ export function Features() {
               transition={{ duration: 0.5, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] }}
               className="rounded-xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm transition hover:bg-white/[0.08] md:p-7"
             >
-              <feature.icon className="mb-4 h-9 w-9 text-white/85" />
+              <feature.icon className="mb-4 h-9 w-9 text-white" />
               <h3 className="font-heading mb-2 text-lg font-semibold text-white">
                 <ScrollLetters text={feature.title} />
               </h3>
-              <p className="text-sm leading-relaxed text-white/65">
+              <p className="text-sm leading-relaxed text-white">
                 <ScrollLetters text={feature.description} />
               </p>
             </motion.article>

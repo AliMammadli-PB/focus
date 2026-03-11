@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from 'next';
-import { Outfit, Syne, Cormorant_Garamond } from 'next/font/google';
+import { Outfit, Syne, Cormorant_Garamond, Playfair_Display, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import { SiteBackground } from '@/components/site-background';
 import { LoadingGate } from '@/components/loading-gate';
-import { ThemeProvider } from '@/components/theme-provider';
 import { LangProvider } from '@/context/language';
+import { ThemeProvider } from '@/context/theme-context';
 import { DesignModeProvider } from '@/context/design-mode';
 import { DesignModePanel } from '@/components/design-mode-panel';
 import { FloatingContact } from '@/components/floating-contact';
-import { Header } from '@/components/header';
+import { ThemeShell } from '@/components/theme-shell';
+import { ThemePanel } from '@/components/theme-panel';
 
 export const metadata: Metadata = {
   title: 'Qarabağ Atları Meydanı · Ağ Şəhər — Mənzil Satışı',
@@ -44,6 +44,18 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 });
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-theme2',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-theme3',
+  display: 'swap',
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -51,20 +63,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="az" suppressHydrationWarning className="dark">
-      <body className={`${outfit.variable} ${syne.variable} ${cormorant.variable} font-sans min-h-screen bg-transparent text-[var(--text)] antialiased`} suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <LangProvider>
+      <body className={`${outfit.variable} ${syne.variable} ${cormorant.variable} ${playfair.variable} ${jetbrainsMono.variable} font-sans min-h-screen bg-transparent text-[var(--text)] antialiased`} suppressHydrationWarning>
+        <LangProvider>
+          <ThemeProvider>
             <LoadingGate>
               <DesignModeProvider>
-                <Header />
-                <SiteBackground />
-                <main className="relative z-10">{children}</main>
+                <ThemeShell>{children}</ThemeShell>
+                <ThemePanel />
                 <DesignModePanel />
                 <FloatingContact />
               </DesignModeProvider>
             </LoadingGate>
-          </LangProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </LangProvider>
       </body>
     </html>
   );

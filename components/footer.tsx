@@ -37,10 +37,10 @@ export function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 md:flex-row" style={{ transform: `translate(${fx}px, ${fy}px)` }}>
           <div className="text-center md:text-left">
             <p data-design-key="footer.brand" className="font-heading text-base font-semibold text-white">
-              <ScrollLetters text={get('footer.brand', 'Qarabağ Atları Meydanı')} />
+              <ScrollLetters text={get('footer.brand', 'Qarabagh Horses Square')} />
             </p>
-            <p data-design-key="footer.tagline" className="mt-1 text-sm text-white/55">
-              <ScrollLetters text={get('footer.tagline', 'Ağ Şəhər · Smart mənzillər · 24/7 monitorinq')} />
+            <p data-design-key="footer.tagline" className="mt-1 text-sm text-white">
+              <ScrollLetters text={get('footer.tagline', 'Ağ Şəhər · Premium Rezidenslər')} />
             </p>
           </div>
         <nav aria-label="Footer menyu">
@@ -49,7 +49,7 @@ export function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-white/55 transition hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded px-2 py-1"
+                  className="text-sm text-white transition hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded px-2 py-1"
                 >
                   {link.label}
                 </Link>
@@ -64,7 +64,7 @@ export function Footer() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg text-white/55 transition hover:text-white"
+              className="text-lg text-white transition hover:text-white"
               aria-label={s.label}
             >
               {s.icon}
@@ -73,9 +73,9 @@ export function Footer() {
         </div>
         </div>
       </DraggableSection>
-      <div className="mx-auto mt-10 max-w-6xl border-t border-white/5 pt-6 text-center text-sm text-white/50">
+      <div className="mx-auto mt-10 max-w-6xl border-t border-white/5 pt-6 text-center text-sm text-white">
         <p>
-          © {new Date().getFullYear()} Qarabağ Atları Meydanı · Ağ Şəhər
+          © {new Date().getFullYear()} Qarabagh Horses Square · Ağ Şəhər
         </p>
         <p className="mt-2">
           <a href="/broshur.pdf" target="_blank" rel="noopener noreferrer" className="text-amber-400/80 hover:text-amber-300">

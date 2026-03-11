@@ -24,10 +24,20 @@ export function ContactSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <ScrollLetters text="Bizimlə əlaqə" />
+          <ScrollLetters text="Qarabagh Horses Square Residences ilə əlaqə saxlayın" />
         </motion.h2>
+        <motion.div
+          className="mt-4 flex flex-wrap gap-6 text-white"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.08 }}
+        >
+          <span className="font-medium">VEB SAYT</span>
+          <span className="font-medium">E-POÇT</span>
+          <span className="font-medium">TELEFON</span>
+        </motion.div>
         <motion.p
-          className="mt-3 text-white/70"
+          className="mt-3 text-white"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.1 }}
