@@ -23,13 +23,13 @@ export function HeaderTheme2() {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-[100] border-b border-stone-200/80 bg-white/90 backdrop-blur-md theme-2-header">
-      <div className="mx-auto flex h-20 max-w-5xl items-center justify-between px-6">
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Əsas menyu">
+      <div className="mx-auto grid h-20 max-w-5xl grid-cols-3 items-center gap-4 px-4 md:px-6">
+        <nav className="hidden min-w-0 items-center justify-start gap-4 md:flex md:gap-6" aria-label="Əsas menyu">
           {NAV_LINKS.slice(0, 5).map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-stone-600 transition hover:text-stone-900"
+              className="shrink-0 text-sm font-medium text-stone-600 transition hover:text-stone-900"
             >
               {t(link.key)}
             </Link>
@@ -38,13 +38,13 @@ export function HeaderTheme2() {
 
         <Link
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 font-theme2 text-xl font-semibold tracking-wide text-stone-900"
+          className="min-w-0 justify-self-center truncate font-theme2 text-center text-lg font-semibold tracking-wide text-stone-900 md:text-xl"
           aria-label="Ana səhifə"
         >
           Qarabagh Horses Square
         </Link>
 
-        <div className="flex items-center gap-4">
+        <div className="flex min-w-0 items-center justify-end gap-2 md:gap-4">
           <div className="relative">
             <button
               type="button"

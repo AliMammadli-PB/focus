@@ -9,9 +9,11 @@ import {
   useState,
 } from 'react';
 
-export type ThemeId = '1' | '2' | '3';
+export type ThemeId = '1' | '2' | '3' | '4' | '5' | '6';
 
 const STORAGE_KEY = 'qarabag-theme';
+
+const VALID_THEMES: ThemeId[] = ['1', '2', '3', '4', '5', '6'];
 
 type ThemeContextValue = {
   theme: ThemeId;
@@ -26,7 +28,7 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 function loadTheme(): ThemeId {
   if (typeof window === 'undefined') return '1';
   const s = localStorage.getItem(STORAGE_KEY);
-  if (s === '2' || s === '3') return s;
+  if (VALID_THEMES.includes(s as ThemeId)) return s as ThemeId;
   return '1';
 }
 
